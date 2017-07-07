@@ -18,6 +18,6 @@ def events_search():
     for i in blacklist:
         if i in text:
             check = "<span class='label label-danger'>未通过</span>"
-            new = "<span class='text-danger'> {} </span>".format(i)
+            new = "<span style='background-color:red; color:white;'>{}</span>".format(i)
             text = text.replace(i, new)
     return render_template('index.html', text=text, check=check, old=old)
