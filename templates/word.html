@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+
+    <div>
+        <h3>现有敏感词(用空格分开)</h3>
+
+        <form action="/word/" method="post">
+            <textarea name="text" class="form-control" rows="10">{{ words }}</textarea>
+            <br>
+            <button type="submit" class="btn btn-primary btn-blocks">更新</button>
+        </form>
+    </div>
+
+
+
+{% endblock %}

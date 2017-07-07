@@ -10,8 +10,9 @@ manager = Manager(app)
 
 def register_routes(app):
     from routes.index import main as routes_index
-
+    from routes.word import main as routes_word
     app.register_blueprint(routes_index, url_prefix='/')
+    app.register_blueprint(routes_word, url_prefix='/word')
 
 
 def register_filters(app):

@@ -2,6 +2,7 @@ config/key.py
 demo/*.gif
 api.md
 *.txt
+word_list.json
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

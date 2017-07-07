@@ -16,6 +16,6 @@ config_dict = dict(
 )
 
 # mongodb config
-db_name = 'mongo_fx_calendar'
+db_name = 'mongo_words'
 client = MongoClient("mongodb://localhost:27017")
 db = client[db_name]

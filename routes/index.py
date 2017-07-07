@@ -1,8 +1,7 @@
 from . import *
+from models.words import Words
 
 main = Blueprint('index', __name__)
-
-blacklist = ['赚钱', '无风险', '保本', '保息', '传播', '收益', '交易', '大额投资', '配资', '100%担保', '资金池', '稳赚不亏', ]
 
 
 @main.route('/')
@@ -12,6 +11,7 @@ def index():
 
 @main.route('/', methods=['POST'])
 def events_search():
+    blacklist = Words.read_list()
     text = request.form.get('text', '')
     old = request.form.get('text', '')
     check = "<span class='label label-success'>通过</span>"
@@ -21,3 +21,8 @@ def events_search():
             new = "<span style='background-color:red; color:white;'>{}</span>".format(i)
             text = text.replace(i, new)
     return render_template('index.html', text=text, check=check, old=old)
+
+
+@main.route('/word')
+def word():
+    return render_template('index.html')
