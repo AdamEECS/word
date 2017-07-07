@@ -13,10 +13,11 @@ def index():
 @main.route('/', methods=['POST'])
 def events_search():
     text = request.form.get('text', '')
+    old = request.form.get('text', '')
     check = "<span class='label label-success'>通过</span>"
     for i in blacklist:
         if i in text:
             check = "<span class='label label-danger'>未通过</span>"
-            new = "<span class='text-danger'>{}</span>".format(i)
+            new = "<span class='text-danger'> {} </span>".format(i)
             text = text.replace(i, new)
-    return render_template('index.html', text=text, check=check)
+    return render_template('index.html', text=text, check=check, old=old)
