@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body %}
+
+    <div>
+        <form action="/" method="post">
+            <textarea name="text" class="form-control" rows="10"></textarea>
+            <br>
+            <button type="submit" class="btn btn-primary btn-blocks">检测</button>
+        </form>
+    </div>
+
+    <h3 >{{ check | safe }}</h3>
+    <br>
+    <div id="preview">{{ text | safe }}</div>
+
+
+{% endblock %}

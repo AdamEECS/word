@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>
+        {% block title %}
+            敏感词检查器 - Power by Suzumiya
+        {% endblock %}
+    </title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/base.css') }}">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery.form/4.2.1/jquery.form.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/3.6.2/echarts.min.js"></script>
+</head>
+<body data-channel="public">
+<div class="container alert-container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+<script>
+    $(document).ready(function () {
+            $('.alert').delay(3000).fadeOut(600);
+        }
+    );
+</script>
+{% block head %}
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">敏感词检查器</a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#base-nav-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="base-nav-collapse-1">
+                {% block head_send_email %}
+                {% endblock %}
+                {% block head_login %}
+                    <ul class="nav navbar-nav navbar-right">
+
+                    </ul>
+                {% endblock %}
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+<div class="main container page-wrap">
+    {% block body %}
+    {% endblock %}
+</div>
+
+{% block foot %}
+    <footer class="bs-docs-footer">
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="#">GitHub 仓库</a></li>
+                <li><a href="#">协议</a></li>
+                <li><a href="#">加入我们</a></li>
+                <li><a href="#">关于</a></li>
+            </ul>
+            <p>
+                Designed and built with all the love in the world by @Suzumiya.
+            </p>
+            <p>
+                本项目源码受 MIT 开源协议保护.
+            </p>
+        </div>
+
+    </footer>
+{% endblock %}
+</body>
+
+</html>
