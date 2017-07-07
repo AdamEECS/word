@@ -18,9 +18,7 @@ class Words(MongoModel):
 
     @staticmethod
     def write(data):
-        print(data)
         data = data.split(' ')
-        print(data)
         with open(_file, 'w+', encoding='utf8') as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
 
