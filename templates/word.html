@@ -11,6 +11,20 @@
         </form>
     </div>
 
+    <h3>更新日志</h3>
+    <div class="container-fluid">
+        {% for i in logs %}
+            <div class="row panel panel-success">
+                <div class="panel-heading">访问时间：{{ i.ct|time_str }}</div>
+                <div class="panel-body ">
+                    <div> 操作系统：{{ i.platform }} </div>
+                    <div> 浏览器：{{ i.browser }} {{ i.version }} </div>
+                    <div> 访问来源：{{ i.ip }} </div>
+                    <div> 更新内容：{{ i.text }} </div>
+                </div>
 
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}
